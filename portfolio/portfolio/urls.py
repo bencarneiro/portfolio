@@ -15,10 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from app.views import resume
+from django.urls import path, re_path
+from app.views import resume, mastodon_redirect, favicon_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", resume, name="home"),
+    path("@ben", mastodon_redirect, name="mastodon_redirect"),
+    re_path(r'^favicon\.ico$', favicon_view),
 ]
