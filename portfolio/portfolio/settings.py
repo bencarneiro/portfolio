@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "45.79.46.81", "bencarneiro.com", "www.bencarneiro.com"]
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = (bool(int(os.environ.get('DEBUG',1))))
 
 # Application definition
 
